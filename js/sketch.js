@@ -6,7 +6,7 @@ var synth;
 var square;
 
 function setup() {
-  createCanvas(500, 500);
+  var cnv = createCanvas(500, 500);
   bx = width/2.0;
   by = height/2.0;
 
@@ -14,6 +14,7 @@ function setup() {
   
   synth = new Synth(); 
   synth.create();
+  cnv.parent('sketch-holder');
 }
 
 function draw() {
