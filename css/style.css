@@ -18,10 +18,10 @@ html,body {
 
 .container {
   background-color: #263645;
-  background-image: url('http://timteeling.com/dev/img/network.svg'), radial-gradient(200px 900px at center, #ff8300 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0));
+  background-image: url('http://timteeling.com/dev/img/network.svg'), radial-gradient(200px 1500px at center, #ff8300 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0));
   background-size: 125%, 50% 100%;
   background-position: 0 60%, 0 100%;
-  animation: move 5s linear infinite;
+  animation: move 3s linear infinite;
   height: 100%;
   border: 2px solid #263645;
   border-radius: 20px;
@@ -45,4 +45,8 @@ h1 {
 #sketch-holder {
   text-align: center;
   padding-top: 30px;
+}
+
+#defaultCanvas0 {
+  background-color: rgba(0,0,0,0.4);
 }
