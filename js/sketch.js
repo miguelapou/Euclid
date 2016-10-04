@@ -6,7 +6,7 @@ var synth;
 var square;
 
 function setup() {
-  var cnv = createCanvas(500, 500);
+  var cnv = createCanvas(800, 500);
   bx = width/2.0;
   by = height/2.0;
 
