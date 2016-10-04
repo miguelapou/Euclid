@@ -7,7 +7,7 @@ var xOffset = 0.0;
 var yOffset = 0.0; 
 
 function setup() {
-  createCanvas(640, 360);
+  createCanvas(500, 500);
   bx = width/2.0;
   by = height/2.0;
   rectMode(RADIUS);  
@@ -30,11 +30,11 @@ function draw() {
     overBox = false;
   }
   
-  // Draw the box
-    yEdge();
+  // Draw the shape
+    canvasEdge();
 }
 
-function yEdge(){
+function canvasEdge(){
   if ((locked) && (mouseY >= height - (boxSize/2))) {
     by = height - (boxSize/2);
   }else if ((locked) && (mouseY <= 0 + (boxSize/2))){
