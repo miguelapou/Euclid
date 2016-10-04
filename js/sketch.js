@@ -12,18 +12,21 @@ function setup() {
 
   square = new Square();
   
+  
   synth = new Synth(); 
   synth.create();
 }
 
 function draw() {
-  background(0);
-
+    background(0);
+  //square methods
   square.display();
-  square.cursorTest();
+  
   square.canvasEdge();
   square.mousePressed();
+  square.cursorTest();
   square.mouseDragged();
   square.mouseReleased();
+  //synth methods
   synth.control();
 }
