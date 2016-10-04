@@ -39,22 +39,22 @@ function Square(){
     }
   }
   this.mousePressed = function() {
-    if(this.overBox && mouseIsPressed) { 
+    if(!this.locked && this.overBox && mouseIsPressed) { 
       this.locked = true; 
       fill(0, 100, 255);
-    } else {
-      this.locked = false;
+      this.xOffset = mouseX-this.x; 
+      this.yOffset = mouseY-this.y;
+      console.log("pressed")
     }
-    this.xOffset = mouseX-this.x; 
-    this.yOffset = mouseY-this.y;
+    
     // console.log('xOffset in mousePressed',this.xOffset);
     // console.log('mouseX',mouseX);
     // console.log('this.x', this.x);
   }
   this.mouseDragged = function() {
     if(this.locked) {
-      this.x = mouseX//-this.xOffset; 
-      this.y = mouseY//-this.yOffset; 
+      this.x = mouseX-this.xOffset; 
+      this.y = mouseY-this.yOffset; 
 
       console.log('xOffset in mouseDragged',this.xOffset);
       console.log('mouseX',mouseX);
@@ -62,6 +62,7 @@ function Square(){
     }
   }
   this.mouseReleased = function() {
+    console.log("released")
     this.locked = false;
   }
 }
