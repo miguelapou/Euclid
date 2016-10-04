@@ -9,7 +9,7 @@ function Synth(){
   }
 
   this.control = function(){
-    var freq = map(mouseX, 0, width, 40, 880);
+    var freq = map(square.x, 0, width, 40, 880);
     this.osc.freq(freq);
 
     var amp = map(mouseY, 0, height, 1, .01);

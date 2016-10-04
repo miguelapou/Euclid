@@ -23,11 +23,19 @@ function draw() {
   //square methods
   square.display();
   
-  square.canvasEdge();
-  square.mousePressed();
-  square.cursorTest();
-  square.mouseDragged();
-  square.mouseReleased();
+  if (mouseIsPressed) {
+    square.mousePressed(); 
+    square.cursorTest(); 
+    square.mouseDragged();
+    square.canvasEdge();
+  }
+  
+  
+  
+
+  if (!mouseIsPressed) {
+    square.mouseReleased();
+  }
   //synth methods
   synth.control();
 }
