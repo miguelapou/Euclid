@@ -9,8 +9,8 @@ function Square(){
   rectMode(RADIUS);
 
   this.display = function(){
-    // console.log(this.x, this.y);
     rect(this.x, this.y, this.boxSize, this.boxSize);
+    fill(120, 0, 75);
   }
   this.cursorTest = function(){
     if (mouseX > this.x-this.boxSize && mouseX < this.x+this.boxSize && 
@@ -23,7 +23,7 @@ function Square(){
     }
     else {
       stroke(153);
-      fill(153);
+      fill(155, 100, 255);
       this.overBox = false;
     }
   }
@@ -39,30 +39,20 @@ function Square(){
     }
   }
   this.mousePressed = function() {
-    if(!this.locked && this.overBox && mouseIsPressed) { 
+    if(!this.locked && this.overBox) { 
       this.locked = true; 
       fill(0, 100, 255);
       this.xOffset = mouseX-this.x; 
       this.yOffset = mouseY-this.y;
-      console.log("pressed")
     }
-    
-    // console.log('xOffset in mousePressed',this.xOffset);
-    // console.log('mouseX',mouseX);
-    // console.log('this.x', this.x);
   }
   this.mouseDragged = function() {
     if(this.locked) {
       this.x = mouseX-this.xOffset; 
       this.y = mouseY-this.yOffset; 
-
-      console.log('xOffset in mouseDragged',this.xOffset);
-      console.log('mouseX',mouseX);
-      console.log('this.x', this.x);
     }
   }
   this.mouseReleased = function() {
-    console.log("released")
     this.locked = false;
   }
 }
