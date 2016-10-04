@@ -19,7 +19,8 @@ function setup() {
 }
 
 function draw() {
-    background(0);
+  clear();
+  // background(0,0,0);
   //square methods
   square.display();
   circle.display();
