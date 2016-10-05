@@ -10,6 +10,8 @@ function setup() {
   square = new Square();
   circle = new Circle();
   diamond = new Diamond();
+  tri = new Tri();
+  chevron = new Chevron();
   
   synth = new Synth(); 
   synth.create();
@@ -24,6 +26,8 @@ function draw() {
   square.display();
   circle.display();
   diamond.display();
+  tri.display();
+  chevron.display();
   
   if (mouseIsPressed) {
     //Square Methods
@@ -41,12 +45,24 @@ function draw() {
     diamond.cursorTest(); 
     diamond.mouseDragged();
     diamond.canvasEdge();
+    //Triangle Methods
+    tri.mousePressed(); 
+    tri.cursorTest(); 
+    tri.mouseDragged();
+    tri.canvasEdge();
+    //Chevron Methods
+    chevron.mousePressed(); 
+    chevron.cursorTest(); 
+    chevron.mouseDragged();
+    chevron.canvasEdge();
   }
 
   if (!mouseIsPressed) {
     square.mouseReleased();
     circle.mouseReleased();
     diamond.mouseReleased();
+    tri.mouseReleased();
+    chevron.mouseReleased();
   }
 
   //synth methods
