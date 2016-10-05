@@ -10,9 +10,10 @@ function setup() {
   bx = width/2.0;
   by = height/2.0;
 
+  //Instantiating Objects
   square = new Square();
   circle = new Circle();
-
+  
   synth = new Synth(); 
   synth.create();
   cnv.parent('sketch-holder');
@@ -21,15 +22,18 @@ function setup() {
 function draw() {
   clear();
   // background(0,0,0);
+  
   //square methods
   square.display();
   circle.display();
   
   if (mouseIsPressed) {
+    //Square Methods
     square.mousePressed(); 
     square.cursorTest(); 
     square.mouseDragged();
     square.canvasEdge();
+    //Circle Methods
     circle.mousePressed(); 
     circle.cursorTest(); 
     circle.mouseDragged();
