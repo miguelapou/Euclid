@@ -1,10 +1,6 @@
 var bx;
 var by;
 
-//object variables
-var synth;
-var square;
-
 function setup() {
   var cnv = createCanvas(500, 500);
   bx = width/2.0;
@@ -13,6 +9,7 @@ function setup() {
   //Instantiating Objects
   square = new Square();
   circle = new Circle();
+  diamond = new Diamond();
   
   synth = new Synth(); 
   synth.create();
@@ -26,6 +23,7 @@ function draw() {
   //square methods
   square.display();
   circle.display();
+  diamond.display();
   
   if (mouseIsPressed) {
     //Square Methods
@@ -38,11 +36,17 @@ function draw() {
     circle.cursorTest(); 
     circle.mouseDragged();
     circle.canvasEdge();
+    //Diamond Methods
+    diamond.mousePressed(); 
+    diamond.cursorTest(); 
+    diamond.mouseDragged();
+    diamond.canvasEdge();
   }
 
   if (!mouseIsPressed) {
     square.mouseReleased();
     circle.mouseReleased();
+    diamond.mouseReleased();
   }
 
   //synth methods
