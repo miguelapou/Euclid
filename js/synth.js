@@ -9,14 +9,32 @@ var E = 329.63;
 var F = 369.99;
 var G = 392.00;
 
+///Envelope
+//var attackLevel = 0.9;
+var releaseLevel = 0;
+
+var attackTime = 0.05;
+var decayTime = 0.02;
+var susPercent = 0.02;
+var releaseTime = 0.5;
+
+var env;
 
 function Synth(){
 
   this.create = function(){
     this.osc = new p5.Oscillator(440, 'sine'); // set frequency and type
-    this.osc.amp(.5);
+    env = new p5.Env();
+    env.setADSR(attackTime, decayTime, susPercent, releaseTime);
     this.osc.start();
+    this.osc.amp(env);
+    setInterval(envAttack, 2000);
   }
+
+  function envAttack(){
+    env.play();
+  }
+
 
   this.control = function(){
     var freq = map(square.x, 0, width, 0, 150);
@@ -65,10 +83,9 @@ function Synth(){
     else if(freq >= 140 && freq <150){
       freq= A*4;
     }
-    console.log(freq);
     this.osc.freq(freq);
 
-    var amp = map(square.y, 0, height, 1, .01);
-    this.osc.amp(amp);
+    var amp = map(square.y, 0, height, .9, 0);
+    env.setRange(amp, releaseLevel);//using square.y to control upper level of env ampli
   }
 }

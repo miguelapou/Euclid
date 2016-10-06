@@ -15,6 +15,8 @@ function setup() {
   
   synth = new Synth(); 
   synth.create();
+  setInterval(console.log('this is working'),500);
+  // setInterval(synth.trigger(), 3000);
   cnv.parent('sketch-holder');
 }
 
@@ -99,4 +101,6 @@ function draw() {
 
   //synth methods
   synth.control();
+
+
 }
