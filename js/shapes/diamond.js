@@ -1,6 +1,6 @@
 function Diamond(){
-  this.x = 40;
-  this.y = 40;
+  this.x = 225;
+  this.y = 400;
   this.boxSize = 20;
   this.overBox = false;
   this.locked = false;

@@ -8,6 +8,8 @@ var env;
 var filter;
 //modulator
 var modulator; 
+//delay
+var delay;
 
 function Synth(){
   //creates sythn and synth modules
@@ -15,8 +17,11 @@ function Synth(){
     this.osc = new p5.Oscillator(440, 'sine');
     env = new p5.Env();
     filter = new p5.LowPass();
+    delay = new p5.Delay();
     this.osc.disconnect();
     this.osc.connect(filter);
+    delay.process(this.osc, .12, .7, 2300);
+    delay.setType('pingPong');
     this.osc.start();
     this.osc.amp(env);
 
@@ -54,6 +59,9 @@ function Synth(){
     var modMaxDepth = 3000;
     var modFreq = map(tri.x, width, 0, 100, 0);
     var modDepth = map(tri.y, height, 0, 0, modMaxDepth);
+    //Delay Variables
+    var delTime = map(chevron.x, 0, width, 0.0, 1.0);
+    var delFeedback = map(chevron.y, height, 0, 0, 0.75);
 
     //Filter Control
     filter.freq(filtFreq);
@@ -69,6 +77,9 @@ function Synth(){
     //Frequency Modulation Control
     modulator.freq(scale(freq)*modulationRatio(modFreq));
     modulator.amp(modDepth);
+    //Delay controls
+    delay.delayTime(delTime);
+    delay.amp(delFeedback);
   }
   //scales ratios for the modulator
   function modulationRatio(modFreq){
