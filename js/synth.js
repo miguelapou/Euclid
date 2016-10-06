@@ -29,7 +29,6 @@ function Synth(){
     function synRhythm(){
       env.play();
       setTimeout(synRhythm, rhythm);
-      console.log('rhythm',rhythm);
   }
     synRhythm();
   }
