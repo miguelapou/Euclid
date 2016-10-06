@@ -49,4 +49,6 @@ h1 {
 
 #defaultCanvas0 {
   background-color: rgba(0,0,0,0.4);
+  border: 2px solid #b7bbce;
+  border-radius: 10px;
 }
