@@ -10,13 +10,14 @@ var F = 369.99;
 var G = 392.00;
 
 ///Envelope
-//var attackLevel = 0.9;
 var releaseLevel = 0;
 
 var attackTime = 0.05;
 var decayTime = 0.02;
 var susPercent = 0.02;
 var releaseTime = 0.5;
+
+var rhythm = 400;
 
 var env;
 
@@ -25,18 +26,24 @@ function Synth(){
   this.create = function(){
     this.osc = new p5.Oscillator(440, 'sine'); // set frequency and type
     env = new p5.Env();
-    env.setADSR(attackTime, decayTime, susPercent, releaseTime);
     this.osc.start();
     this.osc.amp(env);
-    setInterval(envAttack, 2000);
+
+    //setInterval(envAttack, rhythm);
+    function synRhythm(){
+      env.play();
+      setTimeout(synRhythm, rhythm);
+      console.log('rhythm',rhythm);
+  }
+    synRhythm();
   }
 
   function envAttack(){
     env.play();
   }
 
-
   this.control = function(){
+    //frequency control
     var freq = map(square.x, 0, width, 0, 150);
     if(freq >= 0 && freq <10){
       freq= A;
@@ -84,8 +91,10 @@ function Synth(){
       freq= A*4;
     }
     this.osc.freq(freq);
-
+    //Amplitude control
     var amp = map(square.y, 0, height, .9, 0);
-    env.setRange(amp, releaseLevel);//using square.y to control upper level of env ampli
+    env.setRange(amp, releaseLevel);
+    env.setADSR(attackTime, decayTime, susPercent, releaseTime);  
+    rhythm = map(diamond.x, 0, width, 100, 1000);
   }
 }
