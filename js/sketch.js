@@ -31,6 +31,38 @@ function draw() {
   
   if (mouseIsPressed) {
     //Square Methods
+    if(square.locked) {
+      chevron.disabled = true;
+      circle.disabled = true;
+      diamond.disabled = true;
+      tri.disabled = true;
+    } else if (chevron.locked) {
+      square.disabled = true;
+      circle.disabled = true;
+      diamond.disabled = true;
+      tri.disabled = true;
+    } else if (circle.locked) {
+      chevron.disabled = true;
+      square.disabled = true;
+      diamond.disabled = true;
+      tri.disabled = true;
+    } else if (diamond.locked) {
+      chevron.disabled = true;
+      circle.disabled = true;
+      square.disabled = true;
+      tri.disabled = true;
+    } else if (tri.locked) {
+      chevron.disabled = true;
+      circle.disabled = true;
+      diamond.disabled = true;
+      square.disabled = true;
+    } else {
+      tri.disabled = false;
+      chevron.disabled = false;
+      circle.disabled = false;
+      diamond.disabled = false;
+      square.disabled = false;
+    }
     square.mousePressed(); 
     square.cursorTest(); 
     square.mouseDragged();

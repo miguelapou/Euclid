@@ -6,6 +6,7 @@ function Circle(){
   this.locked = false;
   this.xOffset = 0.0; 
   this.yOffset = 0.0; 
+  this.disabled = false;
 
   this.display = function(){
     ellipse(this.x, this.y, this.boxSize, this.boxSize);
@@ -38,13 +39,15 @@ function Circle(){
     }
   }
   this.mousePressed = function() {
-    if(!this.locked && this.overBox) { 
-      this.locked = true; 
-      fill(0, 100, 255);
-      this.xOffset = mouseX-this.x; 
-      this.yOffset = mouseY-this.y;
+      if(this.disabled === false) {
+        if(!this.locked && this.overBox) { 
+          this.locked = true; 
+          fill(0, 100, 255);
+          this.xOffset = mouseX-this.x; 
+          this.yOffset = mouseY-this.y;
+        }
+      }
     }
-  }
   this.mouseDragged = function() {
     if(this.locked) {
       this.x = mouseX-this.xOffset; 

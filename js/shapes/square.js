@@ -5,7 +5,8 @@ function Square(){
   this.overBox = false;
   this.locked = false;
   this.xOffset = 0.0; 
-  this.yOffset = 0.0; 
+  this.yOffset = 0.0;
+  this.disabled = false; 
   rectMode(RADIUS);
 
   this.display = function(){
@@ -39,13 +40,15 @@ function Square(){
     }
   }
   this.mousePressed = function() {
-    if(!this.locked && this.overBox) { 
-      this.locked = true; 
-      fill(0, 100, 255);
-      this.xOffset = mouseX-this.x; 
-      this.yOffset = mouseY-this.y;
+      if(this.disabled === false) {
+        if(!this.locked && this.overBox) { 
+          this.locked = true; 
+          fill(0, 100, 255);
+          this.xOffset = mouseX-this.x; 
+          this.yOffset = mouseY-this.y;
+        }
+      }
     }
-  }
   this.mouseDragged = function() {
     if(this.locked) {
       this.x = mouseX-this.xOffset; 
