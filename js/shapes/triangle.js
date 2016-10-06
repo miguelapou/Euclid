@@ -9,13 +9,20 @@ function Tri(){
   this.disabled = false; 
   rectMode(RADIUS);
 
+  function centroid(x, y) {
+    var oX = ((x + (x + 20) + (x + 41)) / 3);
+    var oY = ((y + (y - 40) + y) / 3);
+    var pVector = new p5.Vector([oX],[oY]);
+    return pVector
+  } 
+
   this.display = function(){
     triangle(this.x, this.y, this.x + 20, this.y - 40, this.x + 40, this.y);
     fill(10, 120, 175);
   }
   this.cursorTest = function(){
-    if (mouseX > this.x-this.boxSize && mouseX < this.x+this.boxSize && 
-      mouseY > this.y-this.boxSize && mouseY < this.y+this.boxSize) {
+    if (mouseX > centroid(this.x, this.y).x-this.boxSize && mouseX < centroid(this.x, this.y).x+this.boxSize && 
+      mouseY > centroid(this.x, this.y).y-this.boxSize && mouseY < centroid(this.x, this.y).y+this.boxSize) {
       this.overBox = true;  
       if(!this.locked) { 
         stroke(255); 

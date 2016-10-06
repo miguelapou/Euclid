@@ -10,15 +10,25 @@ function Diamond(){
   //this.rhythm = 400;
   rectMode(RADIUS);
 
+  function centroid(x, y) {
+    var oX = ((x + (x + 19) + (x + 40) + (x + 20)) / 4);
+    var oY = ((y + (y - 20) + y + (y + 35)) / 4);
+    var pVector = new p5.Vector([oX],[oY]);
+    return pVector
+      console.log(oX)
+  } 
+  console.log(centroid(this.x, this.y))
+
+
   this.display = function(){
-    quad(this.x, this.y, this.x + 20, this.y - 20, this.x + 40, this.y, this.x +20, this.y + 35);
+    quad(this.x, this.y, this.x + 20, this.y - 20, this.x + 40, this.y, this.x + 20, this.y + 35);
     fill(120, 220, 75);
     // this.rhythm = map(diamond.x, 0, width, 100, 4000);
     // console.log('rhythm',this.rhythm);
   }
   this.cursorTest = function(){
-    if (mouseX > this.x-this.boxSize && mouseX < this.x+this.boxSize && 
-      mouseY > this.y-this.boxSize && mouseY < this.y+this.boxSize) {
+    if (mouseX > centroid(this.x, this.y).x-this.boxSize && mouseX < centroid(this.x, this.y).x+this.boxSize && 
+      mouseY > centroid(this.x, this.y).y-this.boxSize && mouseY < centroid(this.x, this.y).y+this.boxSize) {
       this.overBox = true;  
       if(!this.locked) { 
         stroke(255); 
