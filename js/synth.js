@@ -10,18 +10,27 @@ var filter;
 var modulator; 
 //delay
 var delay;
+//recorder
+var recorder;
+var soundFile;
+var state = 0;
 
 function Synth(){
   //creates sythn and synth modules
   this.create = function(){
+    //instantiating objects
     this.osc = new p5.Oscillator(440, 'sine');
     env = new p5.Env();
     filter = new p5.LowPass();
     delay = new p5.Delay();
+    recorder = new p5.SoundRecorder();
+    soundFile = new p5.SoundFile();
+    //initial parameters
     this.osc.disconnect();
     this.osc.connect(filter);
     delay.process(this.osc, .12, .7, 2300);
     delay.setType('pingPong');
+    recorder.setInput();
     this.osc.start();
     this.osc.amp(env);
 
@@ -61,7 +70,7 @@ function Synth(){
     var modDepth = map(tri.y, height, 0, 0, modMaxDepth);
     //Delay Variables
     var delTime = map(chevron.x, 0, width, 0.0, 1.0);
-    var delFeedback = map(chevron.y, height, 0, 0, 0.75);
+    var delAmp = map(chevron.y, height, 0, 0, 0.75);
 
     //Filter Control
     filter.freq(filtFreq);
@@ -79,7 +88,9 @@ function Synth(){
     modulator.amp(modDepth);
     //Delay controls
     delay.delayTime(delTime);
-    delay.amp(delFeedback);
+    delay.amp(delAmp);
+
+    // record();
   }
   //scales ratios for the modulator
   function modulationRatio(modFreq){
@@ -170,6 +181,25 @@ function Synth(){
     else if(freq >= 140 && freq <150){
       return A*4;
     }
+  }
+  //record and download function
+  function keyPressed(){
+    record(SoundFile);
+  }
+  function record(soundFile){
+    if (state === 0 && keyIsDown(LEFT_ARROW)){
+      recorder.record(soundFile);
+      state++;
+    }
+    else if(state === 1 && keyIsDown(OPTION)){
+      recorder.stop();
+      state++;
+    }
+    else if(state === 2 && keyIsDown(RIGHT_ARROW)){
+      recorder.stop();
+      state = 0;
+    }
+    console.log(state);
   }
 }
 
