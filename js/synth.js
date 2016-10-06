@@ -1,18 +1,5 @@
+//Carrier Oscillator
 var osc;
-
-///Note Variables
-var A = 220;
-var B = 246.94;
-var C = 277.18;
-var D = 293.66;
-var E = 329.63;
-var F = 369.99;
-var G = 392.00;
-
-///Envelope
-var releaseLevel = 0;
-var decayTime = 0.02;
-var susPercent = 0.02;
 //Rhythm
 var rhythm = 400;
 //envelope
@@ -23,6 +10,7 @@ var filter;
 var modulator; 
 
 function Synth(){
+  //creates sythn and synth modules
   this.create = function(){
     this.osc = new p5.Oscillator(440, 'sine');
     env = new p5.Env();
@@ -40,18 +28,18 @@ function Synth(){
     modulator.disconnect();
     this.osc.freq( modulator );
 
-    //setInterval(envAttack, rhythm);
+    //Reset rhythms
     function synRhythm(){
       env.play();
       setTimeout(synRhythm, rhythm);
-  }
+    }
     synRhythm();
   }
-
+  //triggers envelope
   function envAttack(){
     env.play();
   }
-
+  //controls synths parameters
   this.control = function(){
     //Variables for freq and amp
     var freq = map(square.x, 0, width, 0, 150);
@@ -63,15 +51,17 @@ function Synth(){
     var filtFreq = map(circle.x, 0, width, 75, 10000);
     var filterRes = map(circle.y, 0, height, 40, 0);
     ///FM Variables
-    var modMaxFreq = 100;
     var modMaxDepth = 3000;
-    var modFreq = map(tri.x, width, 0, modMaxFreq, 0);
+    var modFreq = map(tri.x, width, 0, 100, 0);
     var modDepth = map(tri.y, height, 0, 0, modMaxDepth);
 
     //Filter Control
     filter.freq(filtFreq);
     filter.res(filterRes);
     //Amplitude control
+    var releaseLevel = 0;
+    var decayTime = 0.02;
+    var susPercent = 0.02;
     env.setRange(amp, releaseLevel);
     env.setADSR(envTime, decayTime, susPercent, envTime);
     //Carrier frequency control
@@ -80,7 +70,7 @@ function Synth(){
     modulator.freq(scale(freq)*modulationRatio(modFreq));
     modulator.amp(modDepth);
   }
-
+  //scales ratios for the modulator
   function modulationRatio(modFreq){
     if(modFreq >= 0 && modFreq <10){
       return 0.5;
@@ -113,9 +103,17 @@ function Synth(){
       return 9;
     } 
   }
-
+  //scales frequencies for carrier oscillator
   function scale(freq){
-   //frequency control
+    ///Note Variables
+    var A = 220;
+    var B = 246.94;
+    var C = 277.18;
+    var D = 293.66;
+    var E = 329.63;
+    var F = 369.99;
+    var G = 392.00;
+    //frequency control
     if(freq >= 0 && freq <10){
       return A;
     }
