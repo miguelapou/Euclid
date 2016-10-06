@@ -17,11 +17,16 @@ var susPercent = 0.02;
 var rhythm = 400;
 //envelope
 var env;
+//Filter
+var filter;
 
 function Synth(){
   this.create = function(){
-    this.osc = new p5.Oscillator(440, 'sine'); // set frequency and type
+    this.osc = new p5.Oscillator(440, 'triangle'); // set frequency and type
     env = new p5.Env();
+    filter = new p5.LowPass();
+    this.osc.disconnect();
+    this.osc.connect(filter);
     this.osc.start();
     this.osc.amp(env);
 
@@ -43,6 +48,13 @@ function Synth(){
     var amp = map(square.y, 0, height, .9, 0);
     rhythm = map(diamond.x, 0, width, 50, 1000);
     var envTime = map(diamond.y, 0, height, .4, .005);
+    var filtFreq = map(circle.x, 0, width, 75, 10000);
+    var filterRes = map(circle.y, 0, height, 40, 0);
+    filter.freq(filtFreq);
+    filter.res(filterRes);
+
+
+
     //frequency control
     if(freq >= 0 && freq <10){
       freq= A;
