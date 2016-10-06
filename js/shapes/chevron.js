@@ -15,11 +15,10 @@ function Chevron(){
     var pVector = new p5.Vector([oX],[oY]);
     return pVector
   } 
-    console.log(centroid(this.x, this.y))
 
   this.display = function(){
     quad(this.x, this.y, this.x + 30, this.y - 40, this.x + 60, this.y, this.x + 30,  this.y - 15);
-    fill(120, 220, 75);
+    fill(179, 122, 249);
   }
   this.cursorTest = function(){
     if (mouseX > centroid(this.x, this.y).x-this.boxSize && mouseX < centroid(this.x, this.y).x+this.boxSize && 

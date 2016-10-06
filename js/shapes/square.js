@@ -11,7 +11,7 @@ function Square(){
 
   this.display = function(){
     rect(this.x, this.y, this.boxSize, this.boxSize);
-    fill(120, 0, 75);
+    fill(241, 247, 66);
   }
   this.cursorTest = function(){
     if (mouseX > this.x-this.boxSize && mouseX < this.x+this.boxSize && 

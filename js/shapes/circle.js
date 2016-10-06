@@ -10,7 +10,7 @@ function Circle(){
 
   this.display = function(){
     ellipse(this.x, this.y, this.boxSize, this.boxSize);
-    fill(0, 100, 75);
+    fill(60, 196, 106);
   }
   this.cursorTest = function(){
     if (mouseX > this.x-this.boxSize && mouseX < this.x+this.boxSize && 
