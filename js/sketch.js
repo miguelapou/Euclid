@@ -21,9 +21,8 @@ function setup() {
 
 function draw() {
   clear();
-  // background(0,0,0);
   
-  //square methods
+  //Display Methods
   square.display();
   circle.display();
   diamond.display();
@@ -31,7 +30,6 @@ function draw() {
   chevron.display();
   
   if (mouseIsPressed) {
-    //Square Methods
     if(square.locked) {
       chevron.disabled = true;
       circle.disabled = true;
@@ -63,7 +61,9 @@ function draw() {
       circle.disabled = false;
       diamond.disabled = false;
       square.disabled = false;
-    }
+    }  
+
+    //Square Methods
     square.mousePressed(); 
     square.cursorTest(); 
     square.mouseDragged();
