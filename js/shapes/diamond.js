@@ -7,11 +7,14 @@ function Diamond(){
   this.xOffset = 0.0; 
   this.yOffset = 0.0;
   this.disabled = false; 
+  //this.rhythm = 400;
   rectMode(RADIUS);
 
   this.display = function(){
     quad(this.x, this.y, this.x + 20, this.y - 20, this.x + 40, this.y, this.x +20, this.y + 35);
     fill(120, 220, 75);
+    // this.rhythm = map(diamond.x, 0, width, 100, 4000);
+    // console.log('rhythm',this.rhythm);
   }
   this.cursorTest = function(){
     if (mouseX > this.x-this.boxSize && mouseX < this.x+this.boxSize && 
