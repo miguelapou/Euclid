@@ -17,12 +17,10 @@ function Diamond(){
     return pVector
       console.log(oX)
   } 
-  console.log(centroid(this.x, this.y))
-
 
   this.display = function(){
     quad(this.x, this.y, this.x + 20, this.y - 20, this.x + 40, this.y, this.x + 20, this.y + 35);
-    fill(120, 220, 75);
+    fill(247, 64, 73);
     // this.rhythm = map(diamond.x, 0, width, 100, 4000);
     // console.log('rhythm',this.rhythm);
   }
