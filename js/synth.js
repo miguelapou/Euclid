@@ -19,13 +19,12 @@ var rhythm = 400;
 var env;
 //Filter
 var filter;
-/////////////////////////////////////
 //modulator
 var modulator; 
 
 function Synth(){
   this.create = function(){
-    this.osc = new p5.Oscillator(440, 'sine'); // set frequency and type
+    this.osc = new p5.Oscillator(440, 'sine');
     env = new p5.Env();
     filter = new p5.LowPass();
     this.osc.disconnect();
@@ -34,12 +33,12 @@ function Synth(){
     this.osc.amp(env);
 
     // try changing the type to 'square', 'sine' or 'triangle'
-  modulator = new p5.Oscillator('sine');
-  modulator.start();
+    modulator = new p5.Oscillator('sine');
+    modulator.start();
 
-  // add the modulator's output to modulate the carrier's frequency
-  modulator.disconnect();
-  this.osc.freq( modulator );
+    // add the modulator's output to modulate the carrier's frequency
+    modulator.disconnect();
+    this.osc.freq( modulator );
 
     //setInterval(envAttack, rhythm);
     function synRhythm(){
@@ -64,14 +63,10 @@ function Synth(){
     var filtFreq = map(circle.x, 0, width, 75, 10000);
     var filterRes = map(circle.y, 0, height, 40, 0);
     ///FM Variables
-
-    // min/max ranges for modulator
     var modMaxFreq = 100;
-    var modMinFreq = 0;
     var modMaxDepth = 3000;
-    var modMinDepth = 0;
-    var modFreq = map(tri.x, width, 0, modMaxFreq, modMinFreq);
-    var modDepth = map(tri.y, height, 0, modMinDepth, modMaxDepth);
+    var modFreq = map(tri.x, width, 0, modMaxFreq, 0);
+    var modDepth = map(tri.y, height, 0, 0, modMaxDepth);
 
     //Filter Control
     filter.freq(filtFreq);
@@ -82,9 +77,6 @@ function Synth(){
     //Carrier frequency control
     this.osc.freq(scale(freq));
     //Frequency Modulation Control
-    // min/max ranges for modulator
-    
-
     modulator.freq(scale(freq)*modulationRatio(modFreq));
     modulator.amp(modDepth);
   }
