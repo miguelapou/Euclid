@@ -23,14 +23,14 @@ function Synth(){
     env = new p5.Env();
     filter = new p5.LowPass();
     delay = new p5.Delay();
-    recorder = new p5.SoundRecorder();
-    soundFile = new p5.SoundFile();
+    //recorder = new p5.SoundRecorder();
+    //soundFile = new p5.SoundFile();
     //initial parameters
     this.osc.disconnect();
     this.osc.connect(filter);
     delay.process(this.osc, .12, .7, 2300);
     delay.setType('pingPong');
-    recorder.setInput();
+   // recorder.setInput();
     this.osc.start();
     this.osc.amp(env);
 
@@ -182,24 +182,24 @@ function Synth(){
       return A*4;
     }
   }
-  //record and download function
-  function keyPressed(){
-    record(SoundFile);
-  }
-  function record(soundFile){
-    if (state === 0 && keyIsDown(LEFT_ARROW)){
-      recorder.record(soundFile);
-      state++;
-    }
-    else if(state === 1 && keyIsDown(OPTION)){
-      recorder.stop();
-      state++;
-    }
-    else if(state === 2 && keyIsDown(RIGHT_ARROW)){
-      recorder.stop();
-      state = 0;
-    }
-    console.log(state);
-  }
+  // //record and download function
+  // function keyPressed(){
+  //   record(SoundFile);
+  // }
+  // function record(soundFile){
+  //   if (state === 0 && keyIsDown(LEFT_ARROW)){
+  //     recorder.record(soundFile);
+  //     state++;
+  //   }
+  //   else if(state === 1 && keyIsDown(OPTION)){
+  //     recorder.stop();
+  //     state++;
+  //   }
+  //   else if(state === 2 && keyIsDown(RIGHT_ARROW)){
+  //     recorder.stop();
+  //     state = 0;
+  //   }
+  //   console.log(state);
+  // }
 }
 
