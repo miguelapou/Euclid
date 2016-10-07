@@ -64,5 +64,6 @@ function Tri(){
   }
   this.mouseReleased = function() {
     this.locked = false;
+    this.overBox = false;
   }
 }

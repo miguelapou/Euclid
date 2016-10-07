@@ -68,5 +68,6 @@ function Diamond(){
   }
   this.mouseReleased = function() {
     this.locked = false;
+    this.overBox = false;
   }
 }
