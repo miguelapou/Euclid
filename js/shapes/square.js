@@ -40,7 +40,9 @@ function Square(){
     }
   }
   this.mousePressed = function() {
-      if(this.disabled === false) {
+    if(this.locked == true) {
+      return
+    }else if(this.disabled === false) {
         if(!this.locked && this.overBox) { 
           this.locked = true; 
           fill(0, 100, 255);
@@ -57,5 +59,6 @@ function Square(){
   }
   this.mouseReleased = function() {
     this.locked = false;
+    this.overBox = false;
   }
 }

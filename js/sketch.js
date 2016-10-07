@@ -96,10 +96,13 @@ function draw() {
     diamond.mouseReleased();
     tri.mouseReleased();
     chevron.mouseReleased();
+    tri.disabled = false;
+    chevron.disabled = false;
+    circle.disabled = false;
+    diamond.disabled = false;
+    square.disabled = false;
   }
 
   //synth methods
   synth.control();
-
-
 }
