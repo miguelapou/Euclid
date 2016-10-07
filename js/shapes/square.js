@@ -18,6 +18,7 @@ function Square(){
       mouseY > this.y-this.boxSize && mouseY < this.y+this.boxSize) {
       this.overBox = true;  
       if(!this.locked) { 
+        // this.overBox = true;
         stroke(255); 
         fill(255, 100, 255);
       } 
